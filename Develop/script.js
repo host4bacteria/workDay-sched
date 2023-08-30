@@ -1,3 +1,5 @@
+var timeBlock = document.querySelector('.time-block')
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
@@ -20,7 +22,27 @@ $(function () {
   // current hour in 24-hour time?
   //
 
+hourColor = () => {
+var currentHr = dayjs().format('hh');
+console.log(currentHr)
 
+$.each($(`.time-block`), function() {
+    var tmBlockId = parseInt(timeBlock.id)
+
+    if (tmBlockId < currentHr) {
+      timeBlock.classList.add('past')
+    }
+    else if (tmBlockId === currentHr) {
+      timeBlock.classList.add('present')
+    } 
+    else {
+      timeBlock.classList.add('future')
+    }
+})
+};
+hourColor()
+
+// }
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
@@ -33,7 +55,6 @@ $(function () {
 
   var showDate = () => {
     currentDate = dayjs().format('MM-DD-YYYY | HH:mm:ss');
-    console.log(currentDate)
     $(`#currentDay`).text(currentDate);
   }
 // updates date/time by second
