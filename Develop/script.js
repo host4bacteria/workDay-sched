@@ -32,16 +32,12 @@ $(function () {
   // code to display the current date in the header of the page
 
   var showDate = () => {
-    currentDate = dayjs().format('YYYY-MM-DD HH:mm:ss');
+    currentDate = dayjs().format('MM-DD-YYYY | HH:mm:ss');
     console.log(currentDate)
     $(`#currentDay`).text(currentDate);
   }
 // updates date/time by second
   setInterval(showDate, 1000);
   
-  // function showDate() {
-  //     var currentDate = dayjs().format('YYYY-MM-DD HH:mm:ss');
-  //     $(`#currentDay`).text(currentDate);
-  //   }
     
   });
